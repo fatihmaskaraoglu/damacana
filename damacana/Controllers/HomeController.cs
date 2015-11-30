@@ -37,6 +37,13 @@ namespace Damacana.Controllers
             
             return View(products);
         }
+        public ActionResult siparisitamamla()
+        {
+
+            return View(products);
+        }
+
+         
 
 
 

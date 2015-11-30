@@ -4,18 +4,32 @@
 @{
     ViewBag.Title = "Cart";
 }
+<div class="row">
+    <div class="col-xs-6 col-md-3">
+        <a href="#" class="thumbnail">
+            <img src="C:\Users\Fatih\Desktop\erikli.png" alt="...">
+        </a>
+    </div>
+</div>
 
-@foreach (Product p in Model)
-{
-    <h2>
-        @p.Name (@p.Id)
-    </h2>
-    <p>
-        @p.Price
-    </p>
-    <button type="submit" class="btn btn-default">Satın al</button>
-    <hr />
-}
+    @foreach (Product p in Model)
+    {
+        <h2>
+            @p.Name (@p.Id)
+        </h2>
+        <p>
+            @p.Price
+        </p>
+        <button type="submit" class="btn btn-default">
+           sepete ekle
+         </button>
+    
+        <hr />
+    }
+    <li><a href="@Url.Action("siparisitamamla")">Satın Al</a></li>
+    
+
 <a href="@Url.Action("Index")">
-    Back to mainpage
-</a>
+
+        Back to mainpage
+    </a>
