@@ -20,7 +20,7 @@ namespace Damacana.Controllers
             },
             new Product()
             {
-                Id = 1,
+                Id = 2,
                 Name = "Pinar 19L",
                 Price = (decimal)5.90
             }
@@ -32,6 +32,13 @@ namespace Damacana.Controllers
             //Send product to the View Engine
             return View(products);
         }
+        public ActionResult Cart()
+        {
+            
+            return View(products);
+        }
+
+
 
         public ActionResult AddProduct()
         {
