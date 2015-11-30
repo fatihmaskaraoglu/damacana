@@ -1,9 +1,18 @@
 ﻿@using damacana.Models
-@model List<damacana.Models.Product>
+@model List<damacana.Models.cart>
+
 
 @{
     ViewBag.Title = "siparisitamamla";
 }
+  <h4>Siparis alındı.</h4>    
+ 
+     @foreach (cart p in Model)
+     {
+         @p.Id
+     }
+
+
 
 <a href="@Url.Action("Index")">
     Go To List

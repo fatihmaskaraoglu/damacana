@@ -1,23 +1,27 @@
 ﻿@using damacana.Models
 @model List<damacana.Models.Product>
 
+
 @{
     ViewBag.Title = "Home Page";
 }
 
 
-<a href="@Url.Action("AddProduct")">Add New Product</a>
+<h2> <a href="@Url.Action("AddProduct")">Add New Product</a> </h2>
 <hr />
-<a href="@Url.Action("Cart")">for cart</a>
+<h2> <a href="@Url.Action("Cart")"> For Add Cart</a> </h2>
+ 
 
+<h2>Stokta olan ürünlerimiz</h2>
 
 @foreach (Product p in Model)
 {
-    <h2>
+    <h3>
         @p.Name (@p.Id)
-    </h2>
-    <p>
+    </h3>
+    <h4>
         @p.Price
-    </p>
+    </h4>
     <hr />
 }
+

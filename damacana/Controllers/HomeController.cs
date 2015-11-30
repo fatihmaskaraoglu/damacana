@@ -10,6 +10,12 @@ namespace Damacana.Controllers
     public class HomeController : Controller
     {
         //List of products in the Memory
+        User users = new User()
+        {
+            Id = 1,
+            Name = " Kullanıcı"
+        };
+
        
         public static List<Product> products = new List<Product>()
         {
@@ -26,6 +32,15 @@ namespace Damacana.Controllers
                 Price = (decimal)5.90
             }
         };
+        public static List<cart> carts = new List<cart>()
+        {
+            new cart(){
+                Id=1,
+                UserId=123,
+                Product= products,
+
+             },
+        };
 
 
         public ActionResult Index()
@@ -38,11 +53,11 @@ namespace Damacana.Controllers
             
             return View(products);
         }
-        public ActionResult siparisitamamla()
-        {
 
-            return View(products);
-        }
+      
+        
+        
+        
 
          
 
@@ -81,6 +96,11 @@ namespace Damacana.Controllers
         }
 
         */
+        public ActionResult siparisitamamla(Product product)
+        {
+
+            return View(product);
+        }
 
         public ActionResult About()
         {

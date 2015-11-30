@@ -5,15 +5,7 @@
     ViewBag.Title = "Cart";
 }
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-                <img alt="Brand" src="C:\Users\Fatih\Desktop\erikli.png">
-            </a>
-        </div>
-    </div>
-</nav>
+
 
     @foreach (Product p in Model)
     {
@@ -23,16 +15,24 @@
         <p>
             @p.Price
         </p>
-        <button type="submit" class="btn btn-default">sepeteekle</button>
-    
-        <hr />
+        
+        
+     <h4><a href="@Url.Action("siparisitamamla")">Satın Al</a> </h4>
+      {
+        
+      
+
+      }
+
     }
-    <li><a href="@Url.Action("siparisitamamla")">Satın Al</a></li>
+
+    
 
 
 
-
-<a href="@Url.Action("Index")">
+<h2>
+    <a href="@Url.Action("Index")">
 
         Back to mainpage
     </a>
+</h2>
