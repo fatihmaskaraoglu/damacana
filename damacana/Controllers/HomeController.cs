@@ -10,6 +10,7 @@ namespace Damacana.Controllers
     public class HomeController : Controller
     {
         //List of products in the Memory
+       
         public static List<Product> products = new List<Product>()
         {
             new Product()
@@ -70,9 +71,16 @@ namespace Damacana.Controllers
 
             return View(product);
         }
+       /* public static List<Product> productss = new List<Product>();
+        public ActionResult Cart(Product product)
+        {
+            
+            products.Add(product);
 
+            return View(productss);
+        }
 
-
+        */
 
         public ActionResult About()
         {

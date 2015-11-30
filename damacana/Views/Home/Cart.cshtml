@@ -4,13 +4,16 @@
 @{
     ViewBag.Title = "Cart";
 }
-<div class="row">
-    <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail">
-            <img src="C:\Users\Fatih\Desktop\erikli.png" alt="...">
-        </a>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" src="C:\Users\Fatih\Desktop\erikli.png">
+            </a>
+        </div>
     </div>
-</div>
+</nav>
 
     @foreach (Product p in Model)
     {
@@ -20,14 +23,14 @@
         <p>
             @p.Price
         </p>
-        <button type="submit" class="btn btn-default">
-           sepete ekle
-         </button>
+        <button type="submit" class="btn btn-default">sepeteekle</button>
     
         <hr />
     }
     <li><a href="@Url.Action("siparisitamamla")">Satın Al</a></li>
-    
+
+
+
 
 <a href="@Url.Action("Index")">
 
