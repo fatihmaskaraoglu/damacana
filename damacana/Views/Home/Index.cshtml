@@ -7,10 +7,14 @@
 }
 
 
-<h2> <a href="@Url.Action("AddProduct")">Add New Product</a> </h2>
-<hr />
-<h2> <a href="@Url.Action("Cart")"> For Add Cart</a> </h2>
+<ul class="nav nav-pills" role="tablist">
+    <li role="presentation" class="active"><a href="@Url.Action("AddProduct")"> <span class="badge">Add Product</span></a></li>
  
+    <li role="presentation"><a href="@Url.Action("Cart")">Satın Al <span class="badge"></span></a></li>
+</ul>
+
+
+
 
 <h2>Stokta olan ürünlerimiz</h2>
 

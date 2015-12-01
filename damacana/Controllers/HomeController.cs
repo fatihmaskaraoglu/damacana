@@ -32,16 +32,7 @@ namespace Damacana.Controllers
                 Price = (decimal)5.90
             }
         };
-        public static List<cart> carts = new List<cart>()
-        {
-            new cart(){
-                Id=1,
-                UserId=123,
-                Product= products,
-
-             },
-        };
-
+       
 
         public ActionResult Index()
         {
@@ -50,7 +41,7 @@ namespace Damacana.Controllers
         }
         public ActionResult Cart()
         {
-            
+           
             return View(products);
         }
 
@@ -75,7 +66,14 @@ namespace Damacana.Controllers
             //Pass it to the View
             return View(product);
         }
-
+        public static List<Product> products2 = new List<Product>() { };
+        List<Product> Cartlist = new List<Product>();
+        public ActionResult AddCart(Product product)
+        {
+           
+            Cartlist.Add(product);
+            return View(Cartlist);
+        }
 
         [HttpPost]
         public ActionResult SaveProduct(Product product)
@@ -102,18 +100,7 @@ namespace Damacana.Controllers
             return View(product);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+      
     }
 }
