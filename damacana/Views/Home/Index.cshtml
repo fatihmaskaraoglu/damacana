@@ -1,31 +1,33 @@
-﻿@using damacana.Models
-@model List<damacana.Models.Product>
+﻿@using Damacana.Models;
+@model  List<Damacana.Models.Product>
 
 
 @{
     ViewBag.Title = "Home Page";
 }
 
-
-<ul class="nav nav-pills" role="tablist">
-    <li role="presentation" class="active"><a href="@Url.Action("AddProduct")"> <span class="badge">Add Product</span></a></li>
- 
-    <li role="presentation"><a href="@Url.Action("Cart")">Satın Al <span class="badge"></span></a></li>
-</ul>
-
-
-
-
-<h2>Stokta olan ürünlerimiz</h2>
-
-@foreach (Product p in Model)
-{
-    <h3>
-        @p.Name (@p.Id)
-    </h3>
-    <h4>
-        @p.Price
-    </h4>
+<form class="form-horizontal">
     <hr />
-}
-
+    <hr />
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+        </div>
+    </div>
+   
+    <div class="form-group">
+        
+        <a href="@Url.Action("ProductList" )"> Login</a>
+        <hr />
+        <hr />
+        <hr />
+        <a href="@Url.Action("ProductList" )"> Go without Login</a>
+    </div>
+</form>

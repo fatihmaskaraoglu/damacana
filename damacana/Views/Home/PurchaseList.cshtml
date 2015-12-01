@@ -1,0 +1,26 @@
+﻿@using Damacana.Models;
+@model List<Damacana.Models.Purchase>
+@{
+    ViewBag.Title = "PuchaseList";
+}
+
+<h2>PuchaseList</h2>
+
+@foreach (Purchase p in Model)
+{ @p.Id @p.CreatedOn @p.TotalPrice}
+
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            <h3>Purchase ıd  @Html.DisplayFor(modelItem => item.Id) </h3>
+            <h3> tarih: @Html.DisplayFor(modelItem => item.CreatedOn)</h3>
+            <h3> total price : @Html.DisplayFor(modelItem => item.TotalPrice)</h3>
+           
+
+        </td>
+        </tr>
+}
+        <div class=" alert alert-success" role="alert"> <b> Success :) </b></div>
+        you bought this cart !

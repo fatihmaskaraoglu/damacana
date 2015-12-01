@@ -1,0 +1,11 @@
+﻿@model Damacana.Models.Cart
+@{
+    ViewBag.Title = "SaveCart";
+}
+<h2>SaveCart</h2>
+
+
+@using (Html.BeginForm("CartList", "Home", FormMethod.Post))
+{<div class=" alert alert-success" role="alert"> <b> Success :) </b></div>}
+Changes saved<a href="@Url.Action("CartList")"> Go to  Cart List </a>
+<a href="@Url.Action("ProductList")"> Go to  Product List </a>

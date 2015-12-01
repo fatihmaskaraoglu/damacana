@@ -168,8 +168,20 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\AddProduct.cshtml" />
-    <Content Include="Views\Home\Cart.cshtml" />
-    <Content Include="Views\Home\siparisitamamla.cshtml" />
+    <Content Include="Views\Home\Productlist.cshtml" />
+    <Content Include="Views\Home\AddCart.cshtml" />
+    <Content Include="Views\Home\AddPurchase.cshtml" />
+    <Content Include="Views\Home\AddtoCart.cshtml" />
+    <Content Include="Views\Home\CartList.cshtml" />
+    <Content Include="Views\Home\DeleteCart.cshtml" />
+    <Content Include="Views\Home\DeleteProduct.cshtml" />
+    <Content Include="Views\Home\DeleteProductfromCart.cshtml" />
+    <Content Include="Views\Home\EditCart.cshtml" />
+    <Content Include="Views\Home\EditProduct.cshtml" />
+    <Content Include="Views\Home\ProductListofEachCart.cshtml" />
+    <Content Include="Views\Home\PurchaseList.cshtml" />
+    <Content Include="Views\Home\SaveCart.cshtml" />
+    <Content Include="Views\Home\SavePurchase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
