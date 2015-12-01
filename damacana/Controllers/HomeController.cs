@@ -30,7 +30,7 @@ namespace Damacana.Controllers
         public static List<Cart> carts = new List<Cart>(){
             new Cart()
         {
-            Id = 0,
+            Id = 1,
             UserId = 1,
             Products = products
         },
@@ -42,8 +42,9 @@ namespace Damacana.Controllers
         {
             Id = 1,
             UserId = 1,
-            TotalPrice = 0,
-            Products = products
+            TotalPrice = 5,
+            Products = products,
+            CreatedOn=new DateTime(2015,04,25,22,10,55),
         };
        
 
