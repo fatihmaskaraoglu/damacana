@@ -27,14 +27,27 @@ namespace Damacana.Controllers
                 Price = (decimal)5.90
             }
         };
-        static List<Cart> carts = new List<Cart>();
+        public static List<Cart> carts = new List<Cart>(){
+            new Cart()
+        {
+            Id = 0,
+            UserId = 1,
+            Products = products
+        },
 
-        Cart cart1 = new Cart()
+        new Cart()
         {
             Id = 1,
             UserId = 1,
             Products = products
-        };
+        },
+        new Cart()
+        {
+            Id = 2,
+            UserId = 1,
+            Products = products
+        }
+    };
         static List<Purchase> purchases = new List<Purchase>();
 
         Purchase purchase1 = new Purchase()
@@ -49,8 +62,7 @@ namespace Damacana.Controllers
         public ActionResult Index()
         {
             purchases.Add(purchase1);
-           // products.Add(product);
-            carts.Add(cart1);
+           
             return View(products); 
             
         }
@@ -60,9 +72,9 @@ namespace Damacana.Controllers
         }
         public ActionResult AddProduct()
         {
-            //create an empty product
+            
             Product product = new Product();
-            //products.Add(product);
+            
             return View(product);
 
         }
@@ -79,10 +91,11 @@ namespace Damacana.Controllers
         {
             return View(carts);
         }
-        public ActionResult AddCart()
+        public ActionResult AddCart(int Id)
         {
             //create an empty cart
             Cart cart = new Cart();
+            cart.Id = Id;
 
             return View(cart);
 
@@ -140,7 +153,7 @@ namespace Damacana.Controllers
             //   products.Add(product);
             ViewBag.Message = "Your application description page.";
             Product product = new Product();
-
+            Cart cart =new Cart();
             foreach (var find in products)
             {
 
@@ -151,7 +164,7 @@ namespace Damacana.Controllers
                     product.Name = find.Name;
                     product.Price = find.Price;
                     product.Id = find.Id;
-                    product.CartId = 1;
+                    product.CartId = cart.Id;
 
                     products.Remove(find);
                     break;

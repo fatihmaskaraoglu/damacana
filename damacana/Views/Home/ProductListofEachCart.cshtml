@@ -1,9 +1,9 @@
 ﻿@using Damacana.Models;
-@model List<Damacana.Models.Product>
-@{
+@model  List<Damacana.Models.Product> 
     ViewBag.Title = "ProductListofEachCart";
 }
-<h2>ProductListofEachCart</h2>
+<h2>Bu sepette olan ürünler</h2>7
+
 @foreach (var item in Model)
 {
     <tr>
@@ -12,11 +12,12 @@
             <h3> Product Name: @Html.DisplayFor(modelItem => item.Name)</h3>
             <h3> Product Price: @Html.DisplayFor(modelItem => item.Price)</h3>
 
-            <h3> Purchase ID: @Html.DisplayFor(modelItem => item.PurchaseId)</h3>
+
         </td>
         <td>
             <a href="@Url.Action("DeleteProductfromCart", new { name = item.Name })"> DELETE </a>
 
         </td>
     </tr>
+
 }

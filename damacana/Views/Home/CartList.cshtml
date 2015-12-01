@@ -7,9 +7,7 @@
 
 <h2>CartList</h2>
 
-@foreach (Cart p in Model)
-{ @p.Products
-  }
+
 
 
 @foreach (var item in Model)
@@ -19,8 +17,8 @@
             <h3>Cart ID:  @Html.DisplayFor(modelItem => item.Id) </h3>
             <h3> User ID: @Html.DisplayFor(modelItem => item.UserId)</h3>
             
-            <h3><a href="@Url.Action("ProductListofEachCart",new { id = item.Id })"> Go to product list of this cart !!</a></h3>
-            <h3> <a href="@Url.Action("AddPurchase",new { id = item.Id })"> Buy it now !! !!</a></h3>
+            <h3><a href="@Url.Action("ProductListofEachCart",new { id = item.Id })"> Go to product list of this cart </a></h3>
+            <h3> <a href="@Url.Action("AddPurchase",new { id = item.Id })"> Buy it </a></h3>
 
 
         </td>
