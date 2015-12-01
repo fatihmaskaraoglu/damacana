@@ -34,20 +34,8 @@ namespace Damacana.Controllers
             UserId = 1,
             Products = products
         },
-
-        new Cart()
-        {
-            Id = 1,
-            UserId = 1,
-            Products = products
-        },
-        new Cart()
-        {
-            Id = 2,
-            UserId = 1,
-            Products = products
-        }
     };
+          
         static List<Purchase> purchases = new List<Purchase>();
 
         Purchase purchase1 = new Purchase()
@@ -91,11 +79,11 @@ namespace Damacana.Controllers
         {
             return View(carts);
         }
-        public ActionResult AddCart(int Id)
+        public ActionResult AddCart(Cart cart)
         {
             //create an empty cart
-            Cart cart = new Cart();
-            cart.Id = Id;
+            Cart carts = new Cart();
+            
 
             return View(cart);
 

@@ -2,7 +2,7 @@
 @model  List<Damacana.Models.Product> 
     ViewBag.Title = "ProductListofEachCart";
 }
-<h2>Bu sepette olan ürünler</h2>7
+<h2>Bu sepette olan ürünler</h2>
 
 @foreach (var item in Model)
 {
@@ -21,3 +21,4 @@
     </tr>
 
 }
+<a href="@Url.Action("ProductList" )"> listeye dön</a>
