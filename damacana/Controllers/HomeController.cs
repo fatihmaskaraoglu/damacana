@@ -83,10 +83,7 @@ namespace Damacana.Controllers
         {
             //create an empty cart
             Cart carts = new Cart();
-            
-
             return View(cart);
-
         }
         [HttpPost]
         public ActionResult SaveCart(Cart cart)

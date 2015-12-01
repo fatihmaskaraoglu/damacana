@@ -1,6 +1,6 @@
 ﻿@using Damacana.Models;
 @model  List<Damacana.Models.Product> 
-    ViewBag.Title = "ProductListofEachCart";
+ @{   ViewBag.Title = "ProductListofEachCart";
 }
 <h2>Bu sepette olan ürünler</h2>
 
@@ -21,4 +21,7 @@
     </tr>
 
 }
-<a href="@Url.Action("ProductList" )"> listeye dön</a>
+
+<hr />
+<a class="btn btn-info"  href="@Url.Action("ProductList" )"> Back to Product list</a>
+<a class="btn btn-info"  href="@Url.Action("CartList" )"> Back to Cart list</a>

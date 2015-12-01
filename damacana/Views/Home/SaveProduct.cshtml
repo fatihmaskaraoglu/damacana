@@ -4,9 +4,8 @@
     ViewBag.Title = "SaveProduct";
 }
 
-<h2>SaveProduct</h2>
 
 
 @using (Html.BeginForm("ProductList", "Home", FormMethod.Post))
 {<div class=" alert alert-success" role="alert"> <b> Ürün Eklendi </b></div>}
-Changes saved<a href="@Url.Action("ProductList")"> Listeye dönmek icin </a>
+<a href="@Url.Action("ProductList")"> Listeye dönmek icin </a>

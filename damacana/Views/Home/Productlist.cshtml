@@ -8,14 +8,25 @@
     <table style="width:50%">
         <tr>
             <td>
+                <h3 style="color:white">For buy Product Please Chose Your Cart Id </h3>
+            <a class="btn btn-info" href="@Url.Action("AddCart")"><b> For Cart Id</b></a>
+           
+            </td>
+        </tr>
+        </table>
+    <hr />
+    <table>
+        
+        <tr>
+            <td>
                 <a class="btn btn-info" href="@Url.Action("AddProduct")"><b>AddProduct</b></a>
                 <a class="btn btn-info" href="@Url.Action("CartList")"><b>Open Carts </b></a>
-                <a class="btn btn-info" href="@Url.Action("AddCart")"><b>New Cart </b></a>
+                
             </td>
         </tr>
     </table>
     <hr />
-    <h2>ProductList</h2>
+    <h2 style="color:white">ProductList</h2>
     @foreach (var p in Model)
     {
         <table style="width:50%">
