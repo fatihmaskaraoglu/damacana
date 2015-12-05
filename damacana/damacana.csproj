@@ -110,6 +110,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -119,7 +120,6 @@
     <Compile Include="Models\Purchase.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="Views\Home\SaveProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -165,24 +165,16 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\AddProduct.cshtml" />
-    <Content Include="Views\Home\Productlist.cshtml" />
-    <Content Include="Views\Home\AddCart.cshtml" />
-    <Content Include="Views\Home\AddPurchase.cshtml" />
-    <Content Include="Views\Home\AddtoCart.cshtml" />
-    <Content Include="Views\Home\CartList.cshtml" />
-    <Content Include="Views\Home\DeleteCart.cshtml" />
-    <Content Include="Views\Home\DeleteProduct.cshtml" />
-    <Content Include="Views\Home\DeleteProductfromCart.cshtml" />
-    <Content Include="Views\Home\EditCart.cshtml" />
-    <Content Include="Views\Home\EditProduct.cshtml" />
-    <Content Include="Views\Home\ProductListofEachCart.cshtml" />
-    <Content Include="Views\Home\PurchaseList.cshtml" />
-    <Content Include="Views\Home\SaveCart.cshtml" />
-    <Content Include="Views\Home\SavePurchase.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\SaveProduct2.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\PurchaseCompleted.cshtml" />
+    <Content Include="Views\Cart\PurchaseList.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\EditProduct.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\NewProduct.cshtml" />
+    <Content Include="Views\Home\ProductDetails.cshtml" />
+    <Content Include="Views\Home\SaveProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,11 +1,6 @@
-﻿
-@model Damacana.Models.Product
-@{
-    ViewBag.Title = "SaveProduct";
-}
-
-
-
-@using (Html.BeginForm("ProductList", "Home", FormMethod.Post))
-{<div class=" alert alert-success" role="alert"> <b> Ürün Eklendi </b></div>}
-<a href="@Url.Action("ProductList")"> Listeye dönmek icin </a>
+﻿@model Damacana.Models.Product
+<br />
+<div class="alert alert-success">
+    Product Saved: @Model.name
+</div>
+@Html.ActionLink("Back", "Index", "Home")

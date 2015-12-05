@@ -1,0 +1,18 @@
+﻿@model  Damacana.Models.Product
+<h2>New Product</h2>
+<form action="@Url.Action("SaveProduct")" method="POST">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>@Html.TextBoxFor(x => x.name)</td>
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td>@Html.TextBoxFor(x => x.price)</td>
+        </tr>
+    </table>
+    <p>
+        <button type="submit" value="Save">Save</button>
+    </p>
+
+</form>

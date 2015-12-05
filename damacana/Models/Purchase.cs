@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Damacana.Models
 {
     public class Purchase
-    {   public int Id { get; set; }
-        public int UserId { get; set; }
-        public DateTime CreatedOn { get; set; }
-        public decimal TotalPrice { get; set; } 
-        public virtual ICollection<Product> Products { get; set; }
-
+    {
+        public int id { get; set; }
+        public int userId { get; set; }
+        public DateTime createdOn { get; set; }
+        public List<KeyValuePair<Product, int>> items { get; set; }
+        public decimal totalPrice;
     }
 }

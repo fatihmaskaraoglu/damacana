@@ -7,8 +7,9 @@ namespace Damacana.Models
 {
     public class Cart
     {
-        public int Id { get; set; }
-        public int UserId { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
+        public int id { get; set; }
+        public int userId { get; set; }
+        public List<KeyValuePair<Product, int>> items { get; set; }
+        public decimal totalAmount;
     }
 }

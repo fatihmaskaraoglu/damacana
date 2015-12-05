@@ -1,35 +1,28 @@
-﻿@using Damacana.Models;
-@model  List<Damacana.Models.Product>
+﻿@using Damacana.Models
+@model List<Damacana.Models.Product>
 
-@{ViewBag.Title = "Home Page";}
+<br />
+<a class="btn btn-toolbar" href="@Url.Action("NewProduct")">Create New Product</a> |
+<a class="btn btn-toolbar" href="@Url.Action("Index", "Cart")">View Your Cart</a> |
+<a class="btn btn-toolbar" href="@Url.Action("PurchaseList", "Cart")">View Previous Purchases</a>
+<hr />
+<br />
+<h2>List of Products:</h2>
+<hr />
+@foreach (Product p in Model)
+{
 
-    
-
-<body style="background-image:url(http://img0.mxstatic.com/wallpapers/112e4ab8c5074372011bcd4aa862ee2c_large.jpeg)">
-
-
-
-
-    <h1 style ="color:white"> Welcome to Damacana.com </h1>
-    <h3 style="color:white">  best e-water website </h3>
-    <form class="form-horizontal">
-        <hr />
-        <hr />
-        <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label" style="color:white">Username</label>
-            <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Kayıtlı Kullanıcı adınızı girin">
-            </div>
+    <div class="media">
+        <div class="media-left">
+            <a href="@Url.Action("ProductDetails", new { id = p.id })">
+                <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTE0MmIwNDU2YyB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1MTQyYjA0NTZjIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxNC41IiB5PSIzNi41Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true" style="width: 64px; height: 64px;">
+            </a>
         </div>
-
-        <div class="form-group">
-            
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     <h2 style="color:white"><a href="@Url.Action("ProductList" )"> Login</a></h2>
-            <hr />
-
-            <hr />
-            
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <h2 style="color:white"><a href="@Url.Action("ProductList" )"> Go without Login</a></h2>
+        <div class="media-body">
+            <h4 class="media-heading">@p.name</h4>
+            @p.price TL
         </div>
-    </form>
-</body>
+        <a class="btn btn-success" href="@Url.Action("AddToCart","Cart", new { id = p.id})">Add 1 to Cart</a>
+    </div>
+
+}

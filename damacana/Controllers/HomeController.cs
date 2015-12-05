@@ -1,253 +1,104 @@
-﻿
-using System;
+﻿using Damacana.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Net;
 using System.Web.Mvc;
-using Damacana.Models;
 
 namespace Damacana.Controllers
 {
     public class HomeController : Controller
     {
-        //List of products in the Memory
 
-        public static List<Product> products = new List<Product>()
+        public static List<Product>products = new List<Product>()
         {
-            new Product()
+
+            new Product
             {
-                Id = 1,
-                Name = "Erikli 19L",
-                Price = (decimal) 4.90
+                id = 1,
+                name = "Pinar 19L",
+                price = (decimal) 10.0
             },
-            new Product()
+            new Product
             {
-                Id = 2,
-                Name = "Pinar 19L",
-                Price = (decimal)5.90
+                id = 2,
+                name = "Erikli 19L",
+                price = (decimal) 12.5
+            },
+            new Product
+            {
+                id = 3,
+                name = "Erikli 5L",
+                price = (decimal) 12.5
             }
         };
-        public static List<Cart> carts = new List<Cart>(){
-            new Cart()
-        {
-            Id = 1,
-            UserId = 1,
-            Products = products
-        },
-    };
-          
-        static List<Purchase> purchases = new List<Purchase>();
-
-        Purchase purchase1 = new Purchase()
-        {
-            Id = 1,
-            UserId = 1,
-            TotalPrice = 5,
-            Products = products,
-            CreatedOn=new DateTime(2015,04,25,22,10,55),
-        };
-       
 
         public ActionResult Index()
         {
-            purchases.Add(purchase1);
-           
-            return View(products); 
-            
-        }
-        public ActionResult ProductList()
-        {
             return View(products);
         }
-        public ActionResult AddProduct()
-        {
-            
-            Product product = new Product();
-            
-            return View(product);
 
+        public ActionResult NewProduct()
+        {
+            Product product = new Product();
+            return View(product);
         }
 
         [HttpPost]
         public ActionResult SaveProduct(Product product)
         {
-
+            //Save the product
             products.Add(product);
             return View(product);
         }
 
-        public ActionResult CartList()
+        public ActionResult ProductDetails(int id)
         {
-            return View(carts);
+            if (id < 0)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            // This search will be far less ugly when we'll have a db
+            foreach (Product product in HomeController.products)
+                if (product.id == id)
+                    return View(product);
+
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
-        public ActionResult AddCart(Cart cart)
+
+        // GET
+        public ActionResult EditProduct(int id)
         {
-            //create an empty cart
-            Cart carts = new Cart();
-            return View(cart);
+            if (id < 0)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            // This search will be far less ugly when we'll have a db
+            foreach (Product product in HomeController.products)
+                if (product.id == id)
+                    return View(product);
+
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
+
+        // POST
         [HttpPost]
-        public ActionResult SaveCart(Cart cart)
+        public ActionResult SaveModifiedProduct(Product product)
         {
-
-            carts.Add(cart);
-            return View(cart);
-        }
-        public ActionResult EditCart(int id)
-        {
-            //   products.Add(product);
-            ViewBag.Message = "Your application description page.";
-            Cart cart = new Cart();
-
-            foreach (var find in carts)
-            {
-
-                if (find.Id == id)
+            // This search will be far less ugly when we'll have a db
+            foreach (Product p in HomeController.products)
+                if (p.id == product.id)
                 {
-
-
-                    cart.UserId = find.UserId;
-
-                    cart.Id = find.Id;
-
-
-                    carts.Remove(find);
-                    break;
+                    p.name = product.name;
+                    p.price = product.price;
+                    return View("SaveProduct", p);
                 }
 
-            }
-            return View(cart);
-        }
-        [HttpGet]
-        public ActionResult DeleteCart(int id)
-        {
-            ViewBag.Message = "Your application description page.";
-            foreach (var find in carts)
-            {
-
-                if (find.Id == id)
-                {
-                    carts.Remove(find);
-                    break;
-                }
-
-            }
-            return View(carts);
-        }
-        public ActionResult AddtoCart(string name)
-        {
-            //   products.Add(product);
-            ViewBag.Message = "Your application description page.";
-            Product product = new Product();
-            Cart cart =new Cart();
-            foreach (var find in products)
-            {
-
-                if (find.Name == name)
-                {
-
-
-                    product.Name = find.Name;
-                    product.Price = find.Price;
-                    product.Id = find.Id;
-                    product.CartId = cart.Id;
-
-                    products.Remove(find);
-                    break;
-                }
-
-            }
-            return View(product);
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
 
 
-        [HttpGet]
-        public ActionResult DeleteProductfromCart(string name)
-        {
-            ViewBag.Message = "Your application description page.";
-            foreach (var find in products)
-            {
-
-                if (find.Name == name)
-                {
-                    find.CartId = 0;
-                    break;
-                }
-
-            }
-            return View(products);
-        }
-
-        public ActionResult ProductListofEachCart(int id)
-        {
-            List<Product> productsofeachcart = new List<Product>();
-            Product product = new Product();
-            foreach (var find in products)
-            {
-
-                if (find.CartId == id)
-                {
-
-
-                    product.Name = find.Name;
-                    product.Price = find.Price;
-                    product.Id = find.Id;
-
-
-                    productsofeachcart.Add(product);
-
-                }
-
-            }
-            return View(productsofeachcart);
-        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
-        }
-
-        public ActionResult EditProduct(string name)
-        {
-            //   products.Add(product);
-            ViewBag.Message = "Your application description page.";
-            Product product = new Product();
-
-            foreach (var find in products)
-            {
-
-                if (find.Name == name)
-                {
-
-
-                    product.Name = find.Name;
-                    product.Price = find.Price;
-                    product.Id = find.Id;
-
-
-                    products.Remove(find);
-                    break;
-                }
-
-            }
-            return View(product);
-        }
-        [HttpGet]
-        public ActionResult DeleteProduct(string name)
-        {
-            ViewBag.Message = "Your application description page.";
-            foreach (var find in products)
-            {
-
-                if (find.Name == name)
-                {
-                    products.Remove(find);
-                    break;
-                }
-
-            }
-            return View(products);
         }
 
         public ActionResult Contact()
@@ -256,43 +107,5 @@ namespace Damacana.Controllers
 
             return View();
         }
-
-        public ActionResult PurchaseList()
-        {
-            return View(purchases);
-        }
-
-        public ActionResult AddPurchase(int id)
-        {
-            //create an empty cart
-            Purchase purchase = new Purchase();
-            ViewBag.Message = "Your application description page.";
-            decimal k = 0;
-
-            foreach (var find in products)
-            {
-
-                if (find.CartId == id)
-                {
-
-                    k = k + find.Price;
-
-                }
-
-            }
-            purchase.TotalPrice = k;
-            return View(purchase);
-
-
-
-        }
-        [HttpPost]
-        public ActionResult SavePurchase(Purchase purchase)
-        {
-
-            purchases.Add(purchase);
-            return View(purchase);
-        }
-
     }
 }
