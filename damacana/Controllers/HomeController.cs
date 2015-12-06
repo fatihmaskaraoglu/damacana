@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
+using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
+
 
 namespace Damacana.Controllers
 {
     public class HomeController : Controller
     {
-
+        
         public static List<Product>products = new List<Product>()
         {
 
