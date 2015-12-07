@@ -2,11 +2,11 @@
 @model IEnumerable<Damacana.Models.Product>
 
 
-
+<body style="background-image:url(http://img0.mxstatic.com/wallpapers/112e4ab8c5074372011bcd4aa862ee2c_large.jpeg)">
     <br />
-    <a class="btn btn-success" href="@Url.Action("NewProduct")">Yeni Ürün Ekle</a>
+    <a class="btn btn-success" href="@Url.Action("NewProduct")">New Product</a>
     <br />
-    <h2>Ürünlerimiz</h2>
+    <h2 style="color:whitesmoke">Our Products</h2>
     <hr />
     @foreach (Product p in Model)
     {
@@ -31,18 +31,19 @@
                 <td>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a class="btn btn-info" href="@Url.Action("AddCart", new { name = p.Name})"><b>Sepete Ekle</b></a>
+                    <a class="btn btn-info" href="@Url.Action("AddCart", new { name = p.Name})"><b>Add Cart</b></a>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a class="navbar-link" style="color:black" href="@Url.Action("Edit", new { name = p.Name })"><b>Ürünü Bilgisini Değiştir</b></a>
-                    <br />
+                    <a class="btn btn-info" style="color:white" href="@Url.Action("Edit", new { name = p.Name })"><b>Edit Product</b></a>
+                    
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a class="btn btn-danger" style="color:black" href="@Url.Action("DeleteFromList", new { name = p.Name })"><b>Ürünü Sil</b></a>
+                    <a class="btn btn-danger" style="color:white" href="@Url.Action("DeleteFromList", new { name = p.Name })"><b>Delete it</b></a>
                 </td>
             </tr>
         </table>
 
 
-
+        <hr />
     }
+</body>

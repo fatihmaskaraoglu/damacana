@@ -8,9 +8,9 @@
     <tr>
         <td>
             <div class="alert alert-success" role="alert">
-                <h4 class="media-heading">Ödenecek Miktar: @Model.TotalPrice TL</h4>
+                <h4 class="media-heading">Ödenecek Miktar: @Model.TotalPrice TL </h4>
                 <br />
-                <a class="btn btn-info" href="@Url.Action("PurchaseDone", "Purchases", new { x = Model})"><b>Ödemeyi Yap</b></a>
+                <a class="btn btn-info" href="@Url.Action("PurchaseDone", new { x = @Model})"><b>Ödemeyi Yap</b></a>
             </div>
         </td>
     </tr>
