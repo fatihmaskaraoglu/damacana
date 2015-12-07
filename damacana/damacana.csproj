@@ -120,20 +120,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\CartController.cs" />
-    <Compile Include="Controllers\CartController2.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="DAL\initialbilgi.cs" />
-    <Compile Include="DAL\Products.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\PurchasesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\cart.cs" />
-    <Compile Include="Models\damacanamodel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>damacanamodel.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Purchase.cs" />
     <Compile Include="Models\User.cs" />
@@ -156,13 +149,6 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <EntityDeploy Include="Models\damacanamodel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>damacanamodel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\damacanamodel.edmx.diagram">
-      <DependentUpon>damacanamodel.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -191,20 +177,19 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\Cart\PurchaseCompleted.cshtml" />
-    <Content Include="Views\Cart\PurchaseList.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\EditProduct.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\NewProduct.cshtml" />
-    <Content Include="Views\Home\ProductDetails.cshtml" />
-    <Content Include="Views\Home\SaveProduct.cshtml" />
-    <Content Include="Views\CartController2\Create.cshtml" />
-    <Content Include="Views\CartController2\Delete.cshtml" />
-    <Content Include="Views\CartController2\Details.cshtml" />
-    <Content Include="Views\CartController2\Edit.cshtml" />
-    <Content Include="Views\CartController2\Index.cshtml" />
+    <Content Include="Views\Products\AddCart.cshtml" />
+    <Content Include="Views\Products\Cart.cshtml" />
+    <Content Include="Views\Products\DeleteFromCart.cshtml" />
+    <Content Include="Views\Products\DeleteFromList.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Editlenmis.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Products\NewProduct.cshtml" />
+    <Content Include="Views\Products\Purchase.cshtml" />
+    <Content Include="Views\Products\SaveProduct.cshtml" />
+    <Content Include="Views\Purchases\PurchaseDone.cshtml" />
+    <Content Include="Views\Purchases\PurchaseHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

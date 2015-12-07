@@ -1,0 +1,31 @@
+﻿@using Damacana.Models
+@model IEnumerable<Damacana.Models.Purchase>
+
+    <h3>Tüm Ödeme Geçmişi</h3>
+    @foreach (Purchase p in Model)
+    {
+        <table style="width:30%">
+            <tr>
+                <td>
+                    <div class="alert alert-danger" role="alert">
+                        <h4 class="media-heading">Toplam Tutar: @p.TotalPrice TL</h4>
+                        <h4 class="media-heading">Purchase Id:  @p.Id</h4>
+                        <h4 class="media-heading">Ödeme Tarihi: @p.CreatedOn</h4>
+                        @for (int i = 0; i < p.PurchaseList.Count(); i++)
+                        {
+                            <ul>
+                                <li>
+                                    @p.PurchaseList[i].Price TL -  @p.PurchaseList[i].Name
+                                </li>
+                            </ul>
+                        }
+                    </div>
+                </td>
+            </tr>
+        </table>
+    }
+    <nav>
+        <ul class="pager">
+            <li><a href="@Url.Action("Index")">Ana Sayfaya Dön</a></li>
+        </ul>
+    </nav>

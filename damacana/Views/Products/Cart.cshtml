@@ -1,0 +1,31 @@
+﻿@using Damacana.Models
+@Model List<damacana.models.product>
+    @using System.Collections.Generic
+    @{
+        ViewBag.Title = "Sepettekiler";
+    }
+    <h2>@ViewBag.Title</h2>
+    <br>
+    @foreach (var p in Model)
+    {
+        <table style="width:27%">
+            <tr>
+
+                <td>
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="media-heading">@p.Name</h4>
+                        <b>@p.Price TL</b>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a class="btn btn-danger" href="@Url.Action("DeleteFromCart", new { Name = p.Name})"><b>Sepetten Sil</b></a>
+
+                    </div>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    }
+    <a class="btn btn-success" href="@Url.Action("Purchase", new { x = Model })"><b>Siparişi Tamamla</b></a>
+    <ul class="pager">
+        <li><a href="@Url.Action("Index","Products")">Ana Sayfaya Dön</a></li>
+    </ul>

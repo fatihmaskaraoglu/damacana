@@ -1,0 +1,48 @@
+﻿@using Damacana.Models
+@model IEnumerable<Damacana.Models.Product>
+
+
+
+    <br />
+    <a class="btn btn-success" href="@Url.Action("NewProduct")">Yeni Ürün Ekle</a>
+    <br />
+    <h2>Ürünlerimiz</h2>
+    <hr />
+    @foreach (Product p in Model)
+    {
+        <table style="width:67%">
+            <tr>
+                <td>
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="http://www.damacanasufirmalari.com/wp-content/themes/yeni_damacana/images/damacana.png" data-holder-rendered="true" style="width: 149px; height: 120px;">
+                            </a>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="media-heading">@p.Name</h4>
+                        <b>@p.Price TL</b>
+
+                    </div>
+                </td>
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-info" href="@Url.Action("AddCart", new { name = p.Name})"><b>Sepete Ekle</b></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="navbar-link" style="color:black" href="@Url.Action("Edit", new { name = p.Name })"><b>Ürünü Bilgisini Değiştir</b></a>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-danger" style="color:black" href="@Url.Action("DeleteFromList", new { name = p.Name })"><b>Ürünü Sil</b></a>
+                </td>
+            </tr>
+        </table>
+
+
+
+    }

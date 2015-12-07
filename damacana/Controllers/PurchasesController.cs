@@ -7,111 +7,115 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Damacana.Models;
-using damacana.DAL;
 
 namespace damacana.Controllers
 {
-    public class CartController2 : Controller
+    public class PurchasesController : Controller
     {
-        private bilgi db = new bilgi();
+        private PurchaseDBContext db = new PurchaseDBContext();
 
-        // GET: CartController2
+        // GET: Purchases
         public ActionResult Index()
         {
-            return View(db.carts.ToList());
+            var purchases = db.Purchases.Include(p => p.User);
+            return View(purchases.ToList());
         }
 
-        // GET: CartController2/Details/5
+        // GET: Purchases/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cart cart = db.carts.Find(id);
-            if (cart == null)
+            Purchase purchase = db.Purchases.Find(id);
+            if (purchase == null)
             {
                 return HttpNotFound();
             }
-            return View(cart);
+            return View(purchase);
         }
 
-        // GET: CartController2/Create
+        // GET: Purchases/Create
         public ActionResult Create()
         {
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Name");
             return View();
         }
 
-        // POST: CartController2/Create
+        // POST: Purchases/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,userId")] Cart cart)
+        public ActionResult Create([Bind(Include = "Id,UserId,CreatedOn,TotalPrice")] Purchase purchase)
         {
             if (ModelState.IsValid)
             {
-                db.carts.Add(cart);
+                db.Purchases.Add(purchase);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(cart);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Name", purchase.UserId);
+            return View(purchase);
         }
 
-        // GET: CartController2/Edit/5
+        // GET: Purchases/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cart cart = db.carts.Find(id);
-            if (cart == null)
+            Purchase purchase = db.Purchases.Find(id);
+            if (purchase == null)
             {
                 return HttpNotFound();
             }
-            return View(cart);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Name", purchase.UserId);
+            return View(purchase);
         }
 
-        // POST: CartController2/Edit/5
+        // POST: Purchases/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,userId")] Cart cart)
+        public ActionResult Edit([Bind(Include = "Id,UserId,CreatedOn,TotalPrice")] Purchase purchase)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cart).State = EntityState.Modified;
+                db.Entry(purchase).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(cart);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Name", purchase.UserId);
+            return View(purchase);
         }
 
-        // GET: CartController2/Delete/5
+        // GET: Purchases/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cart cart = db.carts.Find(id);
-            if (cart == null)
+            Purchase purchase = db.Purchases.Find(id);
+            if (purchase == null)
             {
                 return HttpNotFound();
             }
-            return View(cart);
+            return View(purchase);
         }
 
-        // POST: CartController2/Delete/5
+        // POST: Purchases/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Cart cart = db.carts.Find(id);
-            db.carts.Remove(cart);
+            Purchase purchase = db.Purchases.Find(id);
+            db.Purchases.Remove(purchase);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
