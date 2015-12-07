@@ -20,7 +20,13 @@ namespace damacana.Controllers
             var purchases = db.Purchases.Include(p => p.User);
             return View(purchases.ToList());
         }
-
+        /*
+        public ActionResult PurchaseDone()
+        {
+            var purchases = db.Purchases.Include(p => p.User);
+            return View(purchases.ToList());
+        }
+        */
         // GET: Purchases/Details/5
         public ActionResult Details(int? id)
         {
@@ -48,7 +54,7 @@ namespace damacana.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserId,CreatedOn,TotalPrice")] Purchase purchase)
+        public ActionResult PurchaseDone([Bind(Include = "Id,UserId,CreatedOn,TotalPrice")] Purchase purchase)
         {
             if (ModelState.IsValid)
             {

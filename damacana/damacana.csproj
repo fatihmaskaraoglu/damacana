@@ -191,7 +191,6 @@
     <Content Include="Views\Purchases\PurchaseDone.cshtml" />
     <Content Include="Views\Purchases\PurchaseHistory.cshtml" />
     <Content Include="Views\Purchases\Index.cshtml" />
-    <Content Include="Views\Products\PurchaseDone.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
