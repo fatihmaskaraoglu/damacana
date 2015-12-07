@@ -10,31 +10,29 @@ using Damacana.Models;
 
 namespace damacana.Controllers
 {
-    public class PurchasesController : Controller
+    public class Purchases1Controller : Controller
     {
-        private PurchaseDBContext db2 = new PurchaseDBContext();
-
-        // GET: Purchases
-        public ActionResult Index()
+        public static List<Purchase> Purchases = new List<Purchase>
         {
-            var purchases = db2.Purchases.Include(p => p.User);
-            return View(purchases.ToList());
-        }
-        /*
-        public ActionResult PurchaseDone()
+
+        };
+        private PurchaseDBContext db = new PurchaseDBContext();
+
+        // GET: Purchases1
+        public ActionResult Index()
         {
             var purchases = db.Purchases.Include(p => p.User);
             return View(purchases.ToList());
         }
-        */
-        // GET: Purchases/Details/5
+
+        // GET: Purchases1/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Purchase purchase = db2.Purchases.Find(id);
+            Purchase purchase = db.Purchases.Find(id);
             if (purchase == null)
             {
                 return HttpNotFound();
@@ -42,48 +40,48 @@ namespace damacana.Controllers
             return View(purchase);
         }
 
-        // GET: Purchases/Create
+        // GET: Purchases1/Create
         public ActionResult Create()
         {
-            ViewBag.UserId = new SelectList(db2.Users, "Id", "Name");
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Name");
             return View();
         }
 
-        // POST: Purchases/Create
+        // POST: Purchases1/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult PurchaseDone([Bind(Include = "Id,UserId,CreatedOn,TotalPrice")] Purchase purchase)
+        public ActionResult Create([Bind(Include = "Id,UserId,CreatedOn,TotalPrice")] Purchase purchase)
         {
             if (ModelState.IsValid)
             {
-                db2.Purchases.Add(purchase);
-                db2.SaveChanges();
+                db.Purchases.Add(purchase);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserId = new SelectList(db2.Users, "Id", "Name", purchase.UserId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Name", purchase.UserId);
             return View(purchase);
         }
 
-        // GET: Purchases/Edit/5
+        // GET: Purchases1/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Purchase purchase = db2.Purchases.Find(id);
+            Purchase purchase = db.Purchases.Find(id);
             if (purchase == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.UserId = new SelectList(db2.Users, "Id", "Name", purchase.UserId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Name", purchase.UserId);
             return View(purchase);
         }
 
-        // POST: Purchases/Edit/5
+        // POST: Purchases1/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -92,22 +90,22 @@ namespace damacana.Controllers
         {
             if (ModelState.IsValid)
             {
-                db2.Entry(purchase).State = EntityState.Modified;
-                db2.SaveChanges();
+                db.Entry(purchase).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserId = new SelectList(db2.Users, "Id", "Name", purchase.UserId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "Name", purchase.UserId);
             return View(purchase);
         }
 
-        // GET: Purchases/Delete/5
+        // GET: Purchases1/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Purchase purchase = db2.Purchases.Find(id);
+            Purchase purchase = db.Purchases.Find(id);
             if (purchase == null)
             {
                 return HttpNotFound();
@@ -115,14 +113,14 @@ namespace damacana.Controllers
             return View(purchase);
         }
 
-        // POST: Purchases/Delete/5
+        // POST: Purchases1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Purchase purchase = db2.Purchases.Find(id);
-            db2.Purchases.Remove(purchase);
-            db2.SaveChanges();
+            Purchase purchase = db.Purchases.Find(id);
+            db.Purchases.Remove(purchase);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -130,9 +128,18 @@ namespace damacana.Controllers
         {
             if (disposing)
             {
-                db2.Dispose();
+                db.Dispose();
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult PurchaseDone(int id,int user,DateTime date,decimal Price){
+            Purchase purchase = new Purchase();
+            purchase.Id = id;
+            purchase.UserId = user;
+            purchase.CreatedOn = date;
+            purchase.TotalPrice = Price;
+            return View(purchase);
+    }
     }
 }
