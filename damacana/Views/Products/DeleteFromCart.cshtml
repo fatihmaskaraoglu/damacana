@@ -1,22 +1,24 @@
 ﻿@using Damacana.Models
 @model Damacana.Models.Product
+<body style="background-image:url(http://img0.mxstatic.com/wallpapers/112e4ab8c5074372011bcd4aa862ee2c_large.jpeg)">
 
-<br />
-<h3><span class="label label-danger">Ürün Silindi</span></h3>
-<br />
-<nav>
-    <table style="width:60%">
-        <tr>
-            <td>
-                <ul class="pager">
-                    <li><a href="@Url.Action("Cart")">Sepete Dön</a></li>
-                </ul>
-            </td>
-            <td>
-                <ul class="pager">
-                    <li><a href="@Url.Action("Index","Products")">Ana Sayfaya Dön</a></li>
-                </ul>
-            </td>
-        </tr>
-    </table>
-</nav>
+    <br />
+    <h3><span class="label label-danger">Ürün Silindi</span></h3>
+    <br />
+    <nav>
+        <table style="width:60%">
+            <tr>
+                <td>
+                    <ul class="pager">
+                        <li><a href="@Url.Action("Cart")">Sepete Dön</a></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="pager">
+                        <li><a href="@Url.Action("Index","Products")">Ana Sayfaya Dön</a></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </nav>
+</body>

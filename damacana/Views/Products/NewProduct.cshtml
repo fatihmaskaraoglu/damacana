@@ -1,16 +1,17 @@
 ﻿@model Damacana.Models.Product
+<body style="background-image:url(http://img0.mxstatic.com/wallpapers/112e4ab8c5074372011bcd4aa862ee2c_large.jpeg)">
+    <h2>Yeni Ürün Ekleme</h2>
+    @using (Html.BeginForm("SaveProduct", "Products", FormMethod.Post))
+    {
+        <div class="form-group">
+            <label>İsim</label>
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Fiyat</label>
+            @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+        </div>
 
-<h2>Yeni Ürün Ekleme</h2>
-@using (Html.BeginForm("SaveProduct", "Products", FormMethod.Post))
-{
-    <div class="form-group">
-        <label>İsim</label>
-        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        <label>Fiyat</label>
-        @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
-    </div>
-
-    <button type="submit" class="btn btn-default">Ekle</button>
-}
+        <button type="submit" class="btn btn-default">Ekle</button>
+    }
+</body>

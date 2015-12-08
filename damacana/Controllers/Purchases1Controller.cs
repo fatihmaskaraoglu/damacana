@@ -33,14 +33,19 @@ namespace damacana.Controllers
             }
             purchase.TotalPrice = totalprice;
 
-            
+           
             db.Purchases.Add(purchase);
+          
             i++;
+            
+           // db.SaveChanges();
             return View(purchase);
         }
+     
         public ActionResult PurchaseHistory()
         {
-
+            
+            db.SaveChanges();
             return View(db.Purchases.ToList());
 
         }

@@ -1,10 +1,11 @@
 ﻿@using Damacana.Models
 @model List<Damacana.Models.Product>
     @using System.Collections.Generic
-    @{
-        ViewBag.Title = "Sepettekiler";
-    }
-    <h2>@ViewBag.Title</h2>
+   
+
+<body style="background-image:url(http://img0.mxstatic.com/wallpapers/112e4ab8c5074372011bcd4aa862ee2c_large.jpeg)">
+
+    <h2 style="color:antiquewhite">In Cart</h2>
     <br>
     @foreach (var p in Model)
     {
@@ -29,3 +30,4 @@
     <ul class="pager">
         <li><a href="@Url.Action("Index","Products")">Ana Sayfaya Dön</a></li>
     </ul>
+</body>
