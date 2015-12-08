@@ -103,7 +103,7 @@ namespace Damacana.Controllers
         }
         public ActionResult Cart()
         {
-
+            TempData["Cartlist"] = CartProducts;
             return View(CartProducts);
         }
         public ActionResult DeleteFromCart(string Name)
@@ -131,8 +131,10 @@ namespace Damacana.Controllers
             {
                 purchase.PurchaseList.Add(p);
                 totalprice = p.Price + totalprice;
+
             }
             purchase.TotalPrice = totalprice;
+            
             return View(purchase);
 
         }

@@ -1,6 +1,6 @@
 ﻿@using Damacana.Models
 @model List<Damacana.Models.Product>
-    @using System.Collections.Generic
+ @using System.Collections.Generic
    
 
 <body style="background-image:url(http://img0.mxstatic.com/wallpapers/112e4ab8c5074372011bcd4aa862ee2c_large.jpeg)">
@@ -26,7 +26,7 @@
             </tr>
         </table>
     }
-    <a class="btn btn-success" href="@Url.Action("Purchase", new { x = Model })"><b>Siparişi Tamamla</b></a>
+    <a class="btn btn-success" href="@Url.Action("Purchase","Purchases1", new { x = Model })"><b>Buy it</b></a>
     <ul class="pager">
         <li><a href="@Url.Action("Index","Products")">Ana Sayfaya Dön</a></li>
     </ul>

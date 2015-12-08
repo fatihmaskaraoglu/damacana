@@ -190,6 +190,7 @@
     <Content Include="Views\Products\SaveProduct.cshtml" />
     <Content Include="Views\Purchases1\PurchaseDone.cshtml" />
     <Content Include="Views\Purchases1\PurchaseHistory.cshtml" />
+    <Content Include="Views\Purchases1\Purchase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
