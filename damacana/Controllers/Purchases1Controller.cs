@@ -3,36 +3,63 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Damacana.Models;
 
+
 namespace damacana.Controllers
 {
     public class Purchases1Controller : Controller
     {
-        public static List<Purchase> Purchases = new List<Purchase>
-        {
-
-        };
         private PurchaseDBContext db = new PurchaseDBContext();
 
+        public static List<Product> CartProduct = Damacana.Controllers.ProductsController.CartProducts;
+        public ActionResult PurchaseDone()
+        {
+            Purchase purchase = new Purchase();
+            int i = 1;
+            purchase.Id = i;
+            purchase.UserId = 1;
+            purchase.CreatedOn = DateTime.Now;
+          decimal totalprice = 0;
+            purchase.PurchaseList = CartProduct;
+            foreach (Product p in CartProduct)
+            {
+                
+                totalprice = p.Price + totalprice;
+            }
+            purchase.TotalPrice = totalprice;
+
+            
+            db.Purchases.Add(purchase);
+            i++;
+            return View(purchase);
+        }
+        public ActionResult PurchaseHistory()
+        {
+
+            return View(db.Purchases.ToList());
+
+        }
+
         // GET: Purchases1
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             var purchases = db.Purchases.Include(p => p.User);
-            return View(purchases.ToList());
+            return View(await purchases.ToListAsync());
         }
 
         // GET: Purchases1/Details/5
-        public ActionResult Details(int? id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Purchase purchase = db.Purchases.Find(id);
+            Purchase purchase = await db.Purchases.FindAsync(id);
             if (purchase == null)
             {
                 return HttpNotFound();
@@ -52,12 +79,12 @@ namespace damacana.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserId,CreatedOn,TotalPrice")] Purchase purchase)
+        public async Task<ActionResult> Create([Bind(Include = "Id,UserId,CreatedOn,TotalPrice")] Purchase purchase)
         {
             if (ModelState.IsValid)
             {
                 db.Purchases.Add(purchase);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -66,13 +93,13 @@ namespace damacana.Controllers
         }
 
         // GET: Purchases1/Edit/5
-        public ActionResult Edit(int? id)
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Purchase purchase = db.Purchases.Find(id);
+            Purchase purchase = await db.Purchases.FindAsync(id);
             if (purchase == null)
             {
                 return HttpNotFound();
@@ -86,12 +113,12 @@ namespace damacana.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,UserId,CreatedOn,TotalPrice")] Purchase purchase)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,UserId,CreatedOn,TotalPrice")] Purchase purchase)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(purchase).State = EntityState.Modified;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             ViewBag.UserId = new SelectList(db.Users, "Id", "Name", purchase.UserId);
@@ -99,13 +126,13 @@ namespace damacana.Controllers
         }
 
         // GET: Purchases1/Delete/5
-        public ActionResult Delete(int? id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Purchase purchase = db.Purchases.Find(id);
+            Purchase purchase = await db.Purchases.FindAsync(id);
             if (purchase == null)
             {
                 return HttpNotFound();
@@ -116,11 +143,11 @@ namespace damacana.Controllers
         // POST: Purchases1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Purchase purchase = db.Purchases.Find(id);
+            Purchase purchase = await db.Purchases.FindAsync(id);
             db.Purchases.Remove(purchase);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
@@ -132,14 +159,5 @@ namespace damacana.Controllers
             }
             base.Dispose(disposing);
         }
-
-        public ActionResult PurchaseDone(int id,int user,DateTime date,decimal Price){
-            Purchase purchase = new Purchase();
-            purchase.Id = id;
-            purchase.UserId = user;
-            purchase.CreatedOn = date;
-            purchase.TotalPrice = Price;
-            return View(purchase);
-    }
     }
 }

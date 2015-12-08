@@ -1,16 +1,17 @@
 ﻿@using Damacana.Models
-@model Damacana.Models.Purchase
+@model Purchase
 
 <br />
 <h3>Sipariş Ödeme</h3>
 <br />
+
 <table style="width:30%">
     <tr>
         <td>
             <div class="alert alert-success" role="alert">
-                <h4 class="media-heading">Ödenecek Miktar: @Model.TotalPrice TL </h4>
+                <h4 class="media-heading">Ödenecek Miktar: @Model.TotalPrice TL</h4>
                 <br />
-                <a class="btn btn-info" href="@Url.Action("PurchaseDone","Purchases1", new { x = @Model.Id})"><b>Ödemeyi Yap</b></a>
+                <a class="btn btn-info" href="@Url.Action("PurchaseDone", "Purchases1")"><b>Ödemeyi Yap</b></a>
             </div>
         </td>
     </tr>
@@ -19,4 +20,5 @@
     <ul class="pager">
         <li><a href="@Url.Action("Index","Products")">Ana Sayfaya Dön</a></li>
     </ul>
+
 </nav>

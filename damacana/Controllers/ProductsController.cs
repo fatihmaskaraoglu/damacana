@@ -27,10 +27,7 @@ namespace Damacana.Controllers
         public ActionResult NewProduct(Product product)
         {
 
-            //<div class="form-group">
-            //<label>Id</label>
-            //@Html.TextBoxFor(x => x.Id, new { @class = "form-control" })
-            //</div>
+           
             return View(product);
         }
 

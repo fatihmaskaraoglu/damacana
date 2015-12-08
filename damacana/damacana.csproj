@@ -123,7 +123,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\Purchases1Controller.cs" />
-    <Compile Include="Controllers\PurchasesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -189,15 +188,8 @@
     <Content Include="Views\Products\NewProduct.cshtml" />
     <Content Include="Views\Products\Purchase.cshtml" />
     <Content Include="Views\Products\SaveProduct.cshtml" />
-    <Content Include="Views\Purchases\PurchaseDone.cshtml" />
-    <Content Include="Views\Purchases\PurchaseHistory.cshtml" />
-    <Content Include="Views\Purchases\Index.cshtml" />
-    <Content Include="Views\Purchases1\Create.cshtml" />
-    <Content Include="Views\Purchases1\Delete.cshtml" />
-    <Content Include="Views\Purchases1\Details.cshtml" />
-    <Content Include="Views\Purchases1\Edit.cshtml" />
-    <Content Include="Views\Purchases1\Index.cshtml" />
     <Content Include="Views\Purchases1\PurchaseDone.cshtml" />
+    <Content Include="Views\Purchases1\PurchaseHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

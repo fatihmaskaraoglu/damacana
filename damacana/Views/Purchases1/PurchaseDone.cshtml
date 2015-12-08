@@ -1,8 +1,10 @@
 ﻿@using Damacana.Models
-@model Damacana.Models.Purchase
+@model Purchase
 
 <h3><span class="label label-success">Ödeme Yapıldı </span></h3>
+
 <h3>Ödeme Bilgileri:</h3>
+
 <table style="width:30%">
     <tr>
         <td>
@@ -10,6 +12,14 @@
                 <h4 class="media-heading">Toplam Tutar: @Model.TotalPrice TL</h4>
                 <h4 class="media-heading">Purchase Id: @Model.Id</h4>
                 <h4 class="media-heading">Ödeme Tarihi: @Model.CreatedOn</h4>
+                @for (int i = 0; i < Model.PurchaseList.Count(); i++)
+                {
+                    <ul>
+                        <li>
+                            @Model.PurchaseList[i].Price TL -  @Model.PurchaseList[i].Name
+                        </li>
+                    </ul>
+                }
 
             </div>
         </td>
@@ -20,12 +30,14 @@
         <tr>
             <td>
                 <ul class="pager">
-                    <li><a href="@Url.Action("PurchaseHistory")">Ödeme Geçmişine Git</a></li>
+                    <li><a href="@Url.Action("PurchaseHistory")">Purchases History </a></li>
+
                 </ul>
             </td>
             <td>
                 <ul class="pager">
-                    <li><a href="@Url.Action("Index","Products")">Ana Sayfaya Dön</a></li>
+                    <li><a href="@Url.Action("Index","Products")">Products</a></li>
+
                 </ul>
             </td>
         </tr>
